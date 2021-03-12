@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import sample from './sample'
 
@@ -42,6 +43,33 @@ const Contacts = () => {
   )
 }
 
+const ShowForm = () => {
+  return (
+    <Form>
+      <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Name</Form.Label>
+        <Form.Control type="email" placeholder="example" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Phone Number</Form.Label>
+        <Form.Control type="email" placeholder="1234 567 890" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="name@example.com" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Company</Form.Label>
+        <Form.Control type="email" placeholder="example pty ltd" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Website</Form.Label>
+        <Form.Control type="email" placeholder="example.com" />
+      </Form.Group>
+    </Form>
+  )
+}
+
 const App = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -61,16 +89,18 @@ const App = () => {
           >+ Add</Button>
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
+              <Modal.Title>Add Contact</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+            <Modal.Body>
+              <ShowForm />
+            </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
+              <Button variant="outline-secondary" onClick={handleClose}>
                 Close
-          </Button>
-              <Button variant="primary" onClick={handleClose}>
+              </Button>
+              <Button variant="outline-primary" onClick={handleClose}>
                 Save Changes
-          </Button>
+              </Button>
             </Modal.Footer>
           </Modal>
         </div>
