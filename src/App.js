@@ -46,7 +46,8 @@ const ShowForm = ({ contacts, set_contacts, handleClose, }) => {
   let new_info = { "name": "", "phone": "", "email": "", "company": { "name": "" }, "website": "" }
   const [info, set_info] = useState(new_info);
   const modify = (name, value, info, set_info) => {
-    info[name] = value;
+    if (name === "company") info[name]["name"] = value;
+    else info[name] = value;
     let temp = { ...info };
     set_info(temp)
   }
@@ -62,19 +63,27 @@ const ShowForm = ({ contacts, set_contacts, handleClose, }) => {
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Phone Number *</Form.Label>
-            <Form.Control type="email" placeholder="1234 567 890" />
+            <Form.Control type="email" placeholder="1234 567 890" onChange={(e) => {
+              modify("phone", e.target.value, info, set_info);
+            }} />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="name@example.com" />
+            <Form.Control type="email" placeholder="name@example.com" onChange={(e) => {
+              modify("email", e.target.value, info, set_info);
+            }} />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Company</Form.Label>
-            <Form.Control type="email" placeholder="example pty ltd" />
+            <Form.Control type="email" placeholder="example pty ltd" onChange={(e) => {
+              modify("company", e.target.value, info, set_info);
+            }} />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Website</Form.Label>
-            <Form.Control type="email" placeholder="example.com" />
+            <Form.Control type="email" placeholder="example.com" onChange={(e) => {
+              modify("website", e.target.value, info, set_info);
+            }} />
           </Form.Group>
         </Form>
       </Modal.Body>
