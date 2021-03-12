@@ -29,3 +29,19 @@
   margin: 5px;
 }
 
+.Ontop {
+  position: absolute;
+}
+
+.Add {
+  /* text-align: center; */
+  display: flex;
+  justify-content: flex-end;
+  margin: 3vmin;
+}
+
+.Add_outer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100vw;
+}

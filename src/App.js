@@ -29,7 +29,7 @@ const Contacts = () => {
                 <Card.Text> Email: {x.email} </Card.Text>
                 <Card.Text> Company: {x.company.name} </Card.Text>
                 <Card.Text> Website: {x.website} </Card.Text>
-                <Button variant="outline-danger" onClick={() => {delete_contact(index)}}>
+                <Button variant="outline-danger" onClick={() => { delete_contact(index) }}>
                   Delete
                 </Button>
               </Card.Body>
@@ -51,6 +51,9 @@ const App = () => {
           </Container>
         </Jumbotron>
         <Contacts />
+        <div className="Ontop Add_outer">
+        <Button variant="outline-primary Ontop Add">+ Add</Button>
+        </div>
       </div>
     </div>
   );
