@@ -5,6 +5,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import sample from './sample'
 
@@ -42,6 +43,9 @@ const Contacts = () => {
 }
 
 const App = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div className="App">
       <div className='Contact_layout'>
@@ -52,7 +56,23 @@ const App = () => {
         </Jumbotron>
         <Contacts />
         <div className="Ontop Add_outer">
-        <Button variant="outline-primary Ontop Add">+ Add</Button>
+          <Button variant="outline-primary Ontop Add"
+            onClick={handleShow}
+          >+ Add</Button>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+          </Button>
+              <Button variant="primary" onClick={handleClose}>
+                Save Changes
+          </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
       </div>
     </div>

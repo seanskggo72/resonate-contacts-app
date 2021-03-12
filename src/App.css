@@ -34,7 +34,6 @@
 }
 
 .Add {
-  /* text-align: center; */
   display: flex;
   justify-content: flex-end;
   margin: 3vmin;
