@@ -12,6 +12,7 @@ Available: https://resonate-contacts.web.app/
 Step 1. Clone and swtich directory to this repository
 
 ``` git clone git@github.com:seanskggo72/resonate-contacts-app.git ```
+
 ``` cd resonate-contacts-app/ ```
 
 Step 2. Install dependencies
