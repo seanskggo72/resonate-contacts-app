@@ -4,48 +4,34 @@ import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import sample from './sample'
 
 const Contacts = () => {
-  const [contacts, set_contacts] = useState({});
+  const [contacts, set_contacts] = useState(sample);
   console.log(contacts);
   return (
-    <div className='Contact_layout'>
-      <div className='Sep'>
-        <Card border="info" className='Each'>
-          <Card.Header>Header</Card.Header>
-          <Card.Body>
-            <Card.Title>Info Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk
-              of the card's content.
-          </Card.Text>
-          </Card.Body>
-        </Card>
-      </div>
-      <div className='Sep'>
-        <Card border="info" className='Each'>
-          <Card.Header>Header</Card.Header>
-          <Card.Body>
-            <Card.Title>Info Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk
-              of the card's content.
-          </Card.Text>
-          </Card.Body>
-        </Card>
-      </div>
-      <div className='Sep'>
-        <Card border="info" className='Each'>
-          <Card.Header>Header</Card.Header>
-          <Card.Body>
-            <Card.Title>Info Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk
-              of the card's content.
-          </Card.Text>
-          </Card.Body>
-        </Card>
-      </div>
+    <div>
+      {contacts.map((x, index) => {
+        return (
+          <div className='Sep' key={index}>
+            <Card border="info" className='Each'>
+              <Card.Header>{x.name}</Card.Header>
+              <Card.Body>
+                <Card.Title>Phone: {x.phone}</Card.Title>
+                <Card.Text>
+                  Email: {x.email}
+                </Card.Text>
+                <Card.Text>
+                  Company: {x.company.name}
+                </Card.Text>
+                <Card.Text>
+                  Website: {x.website}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
+        )
+      })}
     </div>
   )
 }
@@ -53,12 +39,14 @@ const Contacts = () => {
 const App = () => {
   return (
     <div className="App">
-      <Jumbotron fluid className='Banner'>
-        <Container>
-          <h1>Contacts</h1>
-        </Container>
-      </Jumbotron>
-      <Contacts />
+      <div className='Contact_layout'>
+        <Jumbotron fluid className='Banner'>
+          <Container>
+            <h1>Contacts</h1>
+          </Container>
+        </Jumbotron>
+        <Contacts />
+      </div>
     </div>
   );
 }
