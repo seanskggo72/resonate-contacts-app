@@ -42,30 +42,60 @@ const Contacts = ({ contacts, set_contacts }) => {
   )
 }
 
-const ShowForm = ({ contacts, set_contacts }) => {
+const ShowForm = ({ contacts, set_contacts, handleClose, }) => {
+  let new_info = { "name": "", "phone": "", "email": "", "company": { "name": "" }, "website": "" }
+  const [info, set_info] = useState(new_info);
+  const modify = (name, value, info, set_info) => {
+    info[name] = value;
+    let temp = { ...info };
+    set_info(temp)
+  }
   return (
-    <Form>
-      <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Name</Form.Label>
-        <Form.Control type="email" placeholder="example" />
-      </Form.Group>
-      <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Phone Number</Form.Label>
-        <Form.Control type="email" placeholder="1234 567 890" />
-      </Form.Group>
-      <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="name@example.com" />
-      </Form.Group>
-      <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Company</Form.Label>
-        <Form.Control type="email" placeholder="example pty ltd" />
-      </Form.Group>
-      <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Website</Form.Label>
-        <Form.Control type="email" placeholder="example.com" />
-      </Form.Group>
-    </Form>
+    <>
+      <Modal.Body>
+        <Form>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Name *</Form.Label>
+            <Form.Control type="email" placeholder="example" onChange={(e) => {
+              modify("name", e.target.value, info, set_info);
+            }} />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Phone Number *</Form.Label>
+            <Form.Control type="email" placeholder="1234 567 890" />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="name@example.com" />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Company</Form.Label>
+            <Form.Control type="email" placeholder="example pty ltd" />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Website</Form.Label>
+            <Form.Control type="email" placeholder="example.com" />
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="outline-secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="outline-primary" onClick={() => {
+          if (info.name === "" || info.phone === "") {
+            alert("Name and Phone Number field is mandatory")
+          } else {
+            contacts.push(info);
+            let new_contacts = [...contacts];
+            set_contacts(new_contacts)
+            handleClose();
+          }
+        }}>
+          Add Contact
+        </Button>
+      </Modal.Footer>
+    </>
   )
 }
 
@@ -91,17 +121,9 @@ const App = () => {
             <Modal.Header closeButton>
               <Modal.Title>Add Contact</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              <ShowForm contacts={contacts} set_contacts={set_contacts} />
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="outline-secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="outline-primary" onClick={handleClose}>
-                Add Contact
-              </Button>
-            </Modal.Footer>
+            <ShowForm contacts={contacts} set_contacts={set_contacts}
+              handleClose={handleClose}
+            />
           </Modal>
         </div>
       </div>
