@@ -10,8 +10,7 @@ import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import sample from './sample'
 
-const Contacts = () => {
-  const [contacts, set_contacts] = useState(sample);
+const Contacts = ({ contacts, set_contacts }) => {
   const delete_contact = (id) => {
     contacts.splice(id, 1);
     let temp = [...contacts];
@@ -43,7 +42,7 @@ const Contacts = () => {
   )
 }
 
-const ShowForm = () => {
+const ShowForm = ({ contacts, set_contacts }) => {
   return (
     <Form>
       <Form.Group controlId="exampleForm.ControlInput1">
@@ -74,6 +73,7 @@ const App = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [contacts, set_contacts] = useState(sample);
   return (
     <div className="App">
       <div className='Contact_layout'>
@@ -82,7 +82,7 @@ const App = () => {
             <h1>Contacts</h1>
           </Container>
         </Jumbotron>
-        <Contacts />
+        <Contacts contacts={contacts} set_contacts={set_contacts} />
         <div className="Ontop Add_outer">
           <Button variant="outline-primary Ontop Add"
             onClick={handleShow}
@@ -92,14 +92,14 @@ const App = () => {
               <Modal.Title>Add Contact</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <ShowForm />
+              <ShowForm contacts={contacts} set_contacts={set_contacts} />
             </Modal.Body>
             <Modal.Footer>
               <Button variant="outline-secondary" onClick={handleClose}>
                 Close
               </Button>
               <Button variant="outline-primary" onClick={handleClose}>
-                Save Changes
+                Add Contact
               </Button>
             </Modal.Footer>
           </Modal>
