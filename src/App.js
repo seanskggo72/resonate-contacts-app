@@ -3,6 +3,7 @@ import './App.css';
 import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+import Accordion from 'react-bootstrap/Accordion';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import sample from './sample'
 
@@ -10,12 +11,15 @@ const Contacts = () => {
   const [contacts, set_contacts] = useState(sample);
   console.log(contacts);
   return (
-    <div>
+    <Accordion defaultActiveKey="0">
       {contacts.map((x, index) => {
+        console.log(index)
         return (
-          <div className='Sep' key={index}>
-            <Card border="info" className='Each'>
-              <Card.Header>{x.name}</Card.Header>
+          <Card border="info" className='Each' key={index}>
+            <Accordion.Toggle as={Card.Header} eventKey={index.toString()}>
+              {x.name}
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey={index.toString()}>
               <Card.Body>
                 <Card.Title>Phone: {x.phone}</Card.Title>
                 <Card.Text>
@@ -28,11 +32,11 @@ const Contacts = () => {
                   Website: {x.website}
                 </Card.Text>
               </Card.Body>
-            </Card>
-          </div>
+            </Accordion.Collapse>
+          </Card>
         )
       })}
-    </div>
+    </Accordion>
   )
 }
 
