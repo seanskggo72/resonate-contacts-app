@@ -1,3 +1,18 @@
+@font-face {
+  src: url(./fonts/Montserrat-ExtraLight.ttf);
+  font-family: Montserrat-ExtraLight;
+}
+
+@font-face {
+  src: url(./fonts/Montserrat-Bold.ttf);
+  font-family: Montserrat-Bold;
+}
+
+@font-face {
+  src: url(./fonts/Montserrat-Regular.ttf);
+  font-family: Montserrat-Regular;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -18,11 +33,13 @@
 .Banner {
   display: flex;
   width: 100vw;
+  font-family: 'Montserrat-Bold';
 }
 
 .Each {
-  width: 60vw;
+  width: 45vw;
   min-width: 220px !important;
+  font-family: 'Montserrat-Regular';
 }
 
 .Sep {
@@ -48,6 +65,13 @@
 @media only screen and (max-width: 500px) {
   .Each {
     width: 75vw;
+    min-width: 220px !important;
+  }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 501px) {
+  .Each {
+    width: 60vw;
     min-width: 220px !important;
   }
 }
