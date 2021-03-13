@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import sample from './sample'
+import logo from './imgs/logo.png';
 
 const Contacts = ({ contacts, set_contacts }) => {
   const delete_contact = (id) => {
@@ -55,31 +56,31 @@ const ShowForm = ({ contacts, set_contacts, handleClose, }) => {
     <>
       <Modal.Body>
         <Form>
-          <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Group controlId="exampleForm.ControlInput1" className='Regular'>
             <Form.Label>Name *</Form.Label>
             <Form.Control type="email" placeholder="example" onChange={(e) => {
               modify("name", e.target.value, info, set_info);
             }} />
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Group controlId="exampleForm.ControlInput1" className='Regular'>
             <Form.Label>Phone Number *</Form.Label>
             <Form.Control type="email" placeholder="1234 567 890" onChange={(e) => {
               modify("phone", e.target.value, info, set_info);
             }} />
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Group controlId="exampleForm.ControlInput1" className='Regular'>
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="name@example.com" onChange={(e) => {
               modify("email", e.target.value, info, set_info);
             }} />
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Group controlId="exampleForm.ControlInput1" className='Regular'>
             <Form.Label>Company</Form.Label>
             <Form.Control type="email" placeholder="example pty ltd" onChange={(e) => {
               modify("company", e.target.value, info, set_info);
             }} />
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Group controlId="exampleForm.ControlInput1" className='Regular'>
             <Form.Label>Website</Form.Label>
             <Form.Control type="email" placeholder="example.com" onChange={(e) => {
               modify("website", e.target.value, info, set_info);
@@ -116,6 +117,7 @@ const App = () => {
   return (
     <div className="App">
       <div className='Contact_layout'>
+            <img src={logo} alt='resonate logo' className='Image' />
         <Jumbotron fluid className='Banner'>
           <Container>
             <h1>Contacts</h1>
@@ -128,7 +130,7 @@ const App = () => {
           >+ Add</Button>
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Add Contact</Modal.Title>
+              <Modal.Title className='Regular'>Add Contact</Modal.Title>
             </Modal.Header>
             <ShowForm contacts={contacts} set_contacts={set_contacts}
               handleClose={handleClose}

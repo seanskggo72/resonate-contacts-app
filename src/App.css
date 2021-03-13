@@ -53,13 +53,24 @@
 .Add {
   display: flex;
   justify-content: flex-end;
-  margin: 3vmin;
+  margin-right: 3vmin;
+  margin-top: calc(3.7vmin + 45px);
 }
 
 .Add_outer {
   display: flex;
   justify-content: flex-end;
   width: 100vw;
+}
+
+.Image {
+  width: calc(5vw + 90px);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Regular {
+  font-family: 'Montserrat-Regular';
 }
 
 @media only screen and (max-width: 500px) {
