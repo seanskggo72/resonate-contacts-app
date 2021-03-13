@@ -44,3 +44,10 @@
   justify-content: flex-end;
   width: 100vw;
 }
+
+@media only screen and (max-width: 500px) {
+  .Each {
+    width: 75vw;
+    min-width: 220px !important;
+  }
+}
