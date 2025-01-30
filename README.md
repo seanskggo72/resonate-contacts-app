@@ -1,4 +1,4 @@
-# Contacts App
+# Contacts
 
 CRUD Contacts App
 
